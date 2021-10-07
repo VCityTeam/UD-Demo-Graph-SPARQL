@@ -1,0 +1,51 @@
+version: '2'
+services:
+  postgis:
+    image: bde2020/postgis
+    hostname: postgis
+    # environment:
+    #   - POSTGRES_USER=${POSTGRES_USER}
+    #   - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    #   - POSTGRES_DB=${POSTGRES_DB_NAME}
+    volumes:
+      - ./postgres:/var/lib/postgresql/9.4/main
+    ports:
+      - "${POSTGRES_PORT}:5432"
+
+  strabon:
+    build:
+      context: ./Strabon
+    hostname: strabon
+    environment:
+      # - STRABON_CONNECTION_hostname=${STRABON_CONNECTION_hostname}
+      - STRABON_CONNECTION_hostname=${POSTGRES_ORDBMS}
+      # - STRABON_USER=${STRABON_USER}
+      # - STRABON_PASSWORD=${STRABON_PASSWORD}
+      # - STRABON_PORT=${STRABON_PORT}
+    ports:
+      - "${STRABON_PORT}:8080"
+
+  3dtiles-server:
+    build:
+      context: https://github.com/VCityTeam/3DTiles-Server-docker.git
+      dockerfile: 3dtiles-server-context/Dockerfile
+      args:
+        TILESET_SOURCE: ${TILESET_SOURCE}
+        TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
+    ports:
+      - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
+
+  # udviz:
+  #   build:
+  #     context: ./ud-viz-context
+  #     args:
+  #       GEOSERVER_FQDN: ${GEOSERVER_FQDN}
+  #       GEOSERVER_PORT: ${GEOSERVER_PORT}
+  #       SPATIAL_MULTIMEDIA_DB_FQDN: ${SPATIAL_MULTIMEDIA_DB_FQDN}
+  #       SPATIAL_MULTIMEDIA_DB_PORT: ${SPATIAL_MULTIMEDIA_DB_PORT}
+  #       TILESET_CUSTOM_SERVER: ${TILESET_CUSTOM_SERVER}
+  #       UD_VIZ_PORT: ${UD_VIZ_PORT}
+  #       UD_VIZ_DEMO_FOLDER: ${UD_VIZ_DEMO_FOLDER}
+  #   command: node ./index.js ../DatAgora_PartDieu ${UD_VIZ_PORT}
+  #   ports:
+  #     - ${UD_VIZ_PORT}:${UD_VIZ_PORT}
