@@ -1,5 +1,5 @@
 {
-  "name": "SPARQL_Demo",
+  "name": "SPARQL Module Demo",
   "version": "1.0.0",
   "description": "udv + a SPARQL query engine",
   "main": "./src/bootstrap.js",
