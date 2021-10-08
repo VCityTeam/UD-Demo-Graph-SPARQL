@@ -2,7 +2,7 @@
 
 A demonstration of the visualizing RDF semantic graphs alongside 3D City models using UD-Viz, 3D Tiles Server, Strabon RDF Store, and PostGIS.
 
-![SPARQL POC Component Diagram](./UD-Demo%20SPARQL%20POC%20Component%20Diagram.svg)
+![SPARQL POC Component Diagram](./UD-Demo%20SPARQL%20POC%20Component%20Diagram)
 
 ## Installation
 ### Pre-requisites 
