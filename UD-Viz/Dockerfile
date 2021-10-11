@@ -3,8 +3,6 @@ FROM ubuntu:focal
 LABEL maintainer "VCityTeam"
 LABEL source.repo "https://github.com/VCityTeam/UD-Viz-docker"
 
-ENV UD_VIZ_PORT=${UD_VIZ_PORT}
-
 RUN apt-get update
 
 # Node version 14 is required. For its installation (on focal) refer to e.g.
@@ -17,10 +15,12 @@ RUN npm --version
 RUN apt-get install -y git
 RUN git --version
 
-######### Install UD-Viz
-RUN git clone https://github.com/VCityTeam/UD-Viz.git
-WORKDIR UD-Viz
-RUN git checkout sparql-module
+######### Install UD-Viz-Template
+RUN git clone https://github.com/VCityTeam/UD-Viz-Template.git
+WORKDIR UD-Viz-Template
+COPY bootstrap.js src/bootstrap.js
+COPY config.json assets/config/config.json
+COPY sparqlModule.svg assets/icons/sparqlModule.svg
 RUN npm install
 RUN npm run build
 
@@ -30,6 +30,5 @@ RUN git clone https://github.com/VCityTeam/UD-SimpleServer
 WORKDIR UD-SimpleServer
 RUN npm install
 
-EXPOSE ${UD_VIZ_PORT}
-CMD [ "node", "./index.js", "../UD-Viz", "${UD_VIZ_PORT}" ]
-#CMD [ "node", "./index.js", "../UD-Viz", "80" ]
+EXPOSE 80
+CMD [ "node", "./index.js", "/UD-Viz-Template", "80" ]

@@ -1,5 +1,15 @@
 version: '2'
 services:
+  3dtiles-server:
+    build:
+      context: https://github.com/VCityTeam/3DTiles-Server-docker.git
+      dockerfile: 3dtiles-server-context/Dockerfile
+      args:
+        TILESET_SOURCE: ${TILESET_SOURCE}
+        TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
+    ports:
+      - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
+
   postgis:
     image: bde2020/postgis
     hostname: postgis
@@ -11,16 +21,6 @@ services:
       - ./postgres:/var/lib/postgresql/9.4/main
     ports:
       - "${POSTGRES_PORT}:5432"
-
-  3dtiles-server:
-    build:
-      context: https://github.com/VCityTeam/3DTiles-Server-docker.git
-      dockerfile: 3dtiles-server-context/Dockerfile
-      args:
-        TILESET_SOURCE: ${TILESET_SOURCE}
-        TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
-    ports:
-      - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
 
   strabon:
     build:
@@ -37,9 +37,5 @@ services:
   udviz:
     build:
       context: ./UD-Viz
-      args:
-        TILESET_CUSTOM_SERVER: ${TILESET_CUSTOM_SERVER}
-        UD_VIZ_PORT: ${UD_VIZ_PORT}
-    command: node ./index.js ../DatAgora_PartDieu ${UD_VIZ_PORT}
     ports:
-      - ${UD_VIZ_PORT}:${UD_VIZ_PORT}
+      - ${UD_VIZ_PORT}:80
