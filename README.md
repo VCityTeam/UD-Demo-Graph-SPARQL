@@ -54,3 +54,5 @@ For the SPARQL module to function an RDF dataset must be uploaded to Strabon. To
 5. Set the *RDF Format* dropdown to `RDF/XML`
 6. Copy and paste this dataset into the *Direct Input* field
 7. Click *Store Input*
+
+Now the demo is ready and can be accessed from `localhost:8998`
