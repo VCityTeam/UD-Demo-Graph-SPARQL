@@ -1,8 +1,11 @@
 # UD-Demo-Graph-SPARQL
 
-A demonstration of the visualizing RDF semantic graphs alongside 3D City models using UD-Viz, 3D Tiles Server, Strabon RDF Store, and PostGIS.
-
-Documentation for the SPARQL module of UD-Viz can be found [here](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL).
+A demonstration for visualizing RDF semantic graphs alongside 3D City models using:
+* [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
+  * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
+* [3D Tiles Server](https://github.com/CesiumGS/3d-tiles-samples) to serve 3D Tiles datasets
+* [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
+* [PostGIS](https://postgis.net/) a geospatial database extension of [PostgreSQL](https://www.postgresql.org/) used here as a backend database for Strabon
 
 ### Component Diagram
 ![SPARQL POC Component Diagram](./UD-Demo_SPARQL_POC_Component_Diagram.svg)
@@ -57,7 +60,7 @@ For the SPARQL module to function an RDF dataset must be uploaded to Strabon. To
    * You may also be asked to enter administrative credentials for Strabon. In this case the username and password are declared in the `.env` as well
 4. From the left menu, click *Explore/Modify operations* then *Store*
 5. Set the *RDF Format* dropdown to `RDF/XML`
-6. Copy and paste the first RDF dataset, located here `[./data/LYON_1ER_BATI_2015-20_bldg-patched1](./data/LYON_1ER_BATI_2015-20_bldg-patched1)` into the *Direct Input* field
+6. Copy and paste the first RDF dataset, located here [`./data/LYON_1ER_BATI_2015-20_bldg-patched1`](./data/LYON_1ER_BATI_2015-20_bldg-patched1) into the *Direct Input* field
 7. Click *Store Input* and repeat steps 6-7 for the remaining RDF datasets
 
 Now the demo is ready and can be accessed from `localhost:8998`
