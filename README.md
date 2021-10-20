@@ -60,8 +60,8 @@ For the SPARQL module to function an RDF dataset must be uploaded to Strabon. To
    * You may also be asked to enter administrative credentials for Strabon. In this case the username and password are declared in the `.env` as well
 4. From the left menu, click *Explore/Modify operations* then *Store*
 5. Set the *RDF Format* dropdown to `RDF/XML`
-6. Copy and paste the first RDF dataset, located here [`./data/LYON_1ER_BATI_2015-20_bldg-patched1`](./data/LYON_1ER_BATI_2015-20_bldg-patched1) into the *Direct Input* field
-7. Click *Store Input* and repeat steps 6-7 for the remaining RDF datasets
+6. Copy and paste the first RDF dataset, located here [`./data/LYON_1ER_BATI_2015-20_bldg-patched1`](./data/LYON_1ER_BATI_2015-20_bldg-patched1) into the *Direct Input* field and click *Store Input*
+7. Repeat step 6 for the remaining RDF datasets
 
 Now the demo is ready and can be accessed from `localhost:8998`
 
