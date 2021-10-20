@@ -15,9 +15,10 @@ RUN npm --version
 RUN apt-get install -y git
 RUN git --version
 
-######### Install UD-Viz-Template
+######### Install UD-Viz-Template, a basic web application for UD-Viz projects
 RUN git clone https://github.com/VCityTeam/UD-Viz-Template.git
 WORKDIR UD-Viz-Template
+COPY package.json package.json
 COPY bootstrap.js src/bootstrap.js
 COPY config.json assets/config/config.json
 COPY sparqlModule.svg assets/icons/sparqlModule.svg
