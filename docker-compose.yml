@@ -28,9 +28,9 @@ services:
     hostname: strabon
     environment:
       - STRABON_CONNECTION_hostname=${POSTGRES_ORDBMS}
-      - STRABON_USER=${STRABON_USER}
-      - STRABON_PASSWORD=${STRABON_PASSWORD}
-      - STRABON_PORT=${STRABON_PORT}
+      - STRABON_CONNECTION_port=${POSTGRES_PORT}
+      - STRABON_CREDENTIALS_username=${STRABON_CREDENTIALS_username}
+      - STRABON_CREDENTIALS_password=${STRABON_CREDENTIALS_password}
     ports:
       - "${STRABON_PORT}:8080"
 

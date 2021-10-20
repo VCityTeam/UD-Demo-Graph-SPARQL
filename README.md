@@ -53,8 +53,8 @@ docker-compose up
 For the SPARQL module to function an RDF dataset must be uploaded to Strabon. To do this:
 1. Open a web browser and navigate to `localhost:8997/strabon`
 2. From the left menu, click *Explore/Modify operations* then *Configuration*
-3. Enter the configuration for PostGIS as declared in the `.env` configuration file then click *Connect*
-   * You may be asked to enter administrative credentials for Tomcat (which hosts Strabon). In this case the default username and password are `endpoint` and `3ndpo1nt`
+3. Enter the configuration for **PostGIS** as declared in the `.env` configuration file then click *Connect*
+   * You may also be asked to enter administrative credentials for Strabon. In this case the username and password are declared in the `.env` as well
 4. From the left menu, click *Explore/Modify operations* then *Store*
 5. Set the *RDF Format* dropdown to `RDF/XML`
 6. Copy and paste the first RDF dataset, located here `[./data/LYON_1ER_BATI_2015-20_bldg-patched1](./data/LYON_1ER_BATI_2015-20_bldg-patched1)` into the *Direct Input* field
