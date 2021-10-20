@@ -1,8 +1,11 @@
 # UD-Demo-Graph-SPARQL
 
-A demonstration of the visualizing RDF semantic graphs alongside 3D City models using UD-Viz, 3D Tiles Server, Strabon RDF Store, and PostGIS.
-
-Documentation for the SPARQL module of UD-Viz can be found [here](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL).
+A demonstration for visualizing RDF semantic graphs alongside 3D City models using:
+* [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
+  * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
+* [3D Tiles Server](https://github.com/CesiumGS/3d-tiles-samples) to serve 3D Tiles datasets
+* [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
+* [PostGIS](https://postgis.net/) a geospatial database extension of [PostgreSQL](https://www.postgresql.org/) used here as a backend database for Strabon
 
 ### Component Diagram
 ![SPARQL POC Component Diagram](./UD-Demo_SPARQL_POC_Component_Diagram.svg)
