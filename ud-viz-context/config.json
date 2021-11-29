@@ -1,45 +1,20 @@
 {
   "assets": {
-    "iconFolder": "./assets/icons",
-    "imageFolder": "./assets/img",
+    "iconFolder": "../assets/icons",
+    "imageFolder": "../assets/img",
     "logos": ["logo-liris.png", "logo-univ-lyon.png"]
   },
-  "widgets": {
-    "aboutWindow": true,
-    "helpWindow": true,
-    "authenticationView": true,
-    "documentModule": true,
-    "documentVisualizerWindow": true,
-    "contributeModule": true,
-    "documentValidationModule": true,
-    "documentCommentsModule": true,
-    "guidedTourController": true,
-    "geocodingView": true,
-    "cityObjectModule": true,
-    "linkModule": true,
-    "debug3DTilesWindow": true,
-    "cameraPositionerView": true,
-    "LayerChoice": true,
-    "sparqlModule": true
-  },
-  "server": {
-    "url": "http://rict.liris.cnrs.fr:1525/",
-    "login": "login",
-    "user": "user",
-    "userMe": "user/me",
-    "document": "document",
-    "documentToValidate": "document/in_validation",
-    "comment": "comment",
-    "validate": "document/validate",
-    "file": "file",
-    "guidedTour": "guidedTour",
-    "link": "link"
-  },
   "extents": {
-    "min_x": "1837860.980127206",
-    "max_x": "1851647",
-    "min_y": "5169347.4265999",
-    "max_y": "5180575"
+    "min_x": "1841070.0180609562",
+    "max_x": "1842943.7620767201",
+    "min_y": "5175539.693111161",
+    "max_y": "5175951.3238705285"
+  },
+  "helpWindow": {
+    "htmlPaths": [
+      "../assets/html/contribute.html",
+      "../assets/html/camera.html"
+    ]
   },
   "projection": "EPSG:3946",
   "background_image_layer": {
@@ -65,42 +40,18 @@
   },
   "3DTilesLayers": [
     {
-      "id": "3d-tiles-layer-building",
-      "url": "https://dataset-dl.liris.cnrs.fr/three-d-tiles-lyon-metropolis/Lyon1er_2015_20bldg_TileSet/tileset.json",
+      "id": "Temporal_layer",
+      "url": "http://localhost:8995/tilesets/tileset.json",
       "color": "0xFFFFFF",
-      "initTilesManager": "true"
+      "extensions": ["3DTILES_temporal"]
     }
   ],
   "temporalModule": {
     "view": "SLIDERWINDOW",
     "minTime": 2009,
-    "maxTime": 2015,
+    "maxTime": 2018,
     "currentTime": 2009,
     "timeStep": 1
-  },
-  "geocoding": {
-    "url": "https://nominatim.openstreetmap.org/search",
-    "credit": "© OpenStreetMap contributors under <a href=\"https://www.openstreetmap.org/copyright\">ODbL</a>",
-    "requestTimeIntervalMs": "1000",
-    "result": {
-      "format": "json",
-      "basePath": "",
-      "lng": "lon",
-      "lat": "lat"
-    },
-    "parameters": {
-      "q": {
-        "fill": "query"
-      },
-      "format": {
-        "fill": "value",
-        "value": "json"
-      },
-      "viewbox": {
-        "fill": "extent",
-        "format": "WEST,SOUTH,EAST,NORTH"
-      }
-    }
   },
   "cityObjects": {
     "styles": {
@@ -118,138 +69,6 @@
         "materialProps": {
           "color": "#4c5af7"
         }
-      }
-    }
-  },
-  "sparqlModule": {
-    "url": "http://localhost:8997/strabon/",
-    "url_parameters": "Query?handle=download&format=SPARQL/JSON&view=HTML&query="
-  },
-  "properties": {
-    "title": {
-      "name": "title",
-      "type": "string",
-      "optional": "false",
-      "creationID": "create_title",
-      "labelCreation": "Title of the document",
-      "updatable": "false",
-      "updateID": "update_title",
-      "displayable": "true",
-      "displayID": "title",
-      "label": "false",
-      "queryable": "keyword",
-      "queryID": "query_name"
-    },
-    "description": {
-      "name": "description",
-      "type": "string",
-      "optional": "false",
-      "creationID": "create_description",
-      "labelCreation": "Description",
-      "displayable": "true",
-      "displayID": "description",
-      "label": "Description",
-      "updatable": "true",
-      "updateID": "update_description",
-      "labelUpdate": "Description: ",
-      "queryable": "keyword"
-    },
-    "refDate": {
-      "name": "refDate",
-      "type": "date",
-      "optional": "false",
-      "creationID": "create_refDate",
-      "labelCreation": "Date of referrence",
-      "displayable": "true",
-      "displayID": "refDate",
-      "label": "Referring date",
-      "updatable": "true",
-      "updateID": "update_refDate",
-      "labelUpdate": "Date of referrence",
-      "queryable": "true",
-      "labelQuery": "referring date"
-    },
-    "publicationDate": {
-      "name": "publicationDate",
-      "type": "date",
-      "optional": "false",
-      "creationID": "create_publicationDate",
-      "labelCreation": "Date of publication",
-      "displayable": "true",
-      "displayID": "publicationDate",
-      "label": "Publication date",
-      "updatable": "true",
-      "updateID": "update_publicationDate",
-      "labelUpdate": "Date of publication",
-      "queryable": "true",
-      "labelQuery": "publication date"
-    },
-    "subject": {
-      "name": "subject",
-      "type": "enum",
-      "enum": ["Urbanism", "Architecture", "Tourism"],
-      "optional": "false",
-      "creationID": "create_subject",
-      "labelCreation": "Subject",
-      "displayable": "true",
-      "displayID": "subject",
-      "label": "Subject",
-      "updatable": "true",
-      "updateID": "update_subject",
-      "queryable": "true",
-      "queryID": "query_subject",
-      "labelQuery": "Subject: "
-    },
-    "visualization": {
-      "positionX": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "positionY": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "positionZ": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "quaternionX": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "quaternionY": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "quaternionZ": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "quaternionW": {
-        "type": "double",
-        "optional": "false",
-        "displayable": "false"
-      },
-      "billboardX": {
-        "type": "double",
-        "optional": "true",
-        "displayable": "false"
-      },
-      "billboardY": {
-        "type": "double",
-        "optional": "true",
-        "displayable": "false"
-      },
-      "billboardZ": {
-        "type": "double",
-        "optional": "true",
-        "displayable": "false"
       }
     }
   }

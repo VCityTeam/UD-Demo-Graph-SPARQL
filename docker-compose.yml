@@ -1,29 +1,36 @@
-version: '2'
+version: '2.1'
 services:
-  postgis:
-    image: bde2020/postgis
-    hostname: postgis
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB_NAME}
-    volumes:
-      - ./postgres:/var/lib/postgresql/9.4/main
-    ports:
-      - "${POSTGRES_PORT}:5432"
-
-  strabon:
+  3dtiles-server:
     build:
-      context: ./strabon-context
-    hostname: strabon
-    environment:
-      - STRABON_CONNECTION_hostname=${POSTGRES_ORDBMS}
-      - STRABON_CONNECTION_port=${POSTGRES_PORT}
-      - STRABON_CREDENTIALS_username=${STRABON_CREDENTIALS_username}
-      - STRABON_CREDENTIALS_password=${STRABON_CREDENTIALS_password}
+      context: https://github.com/VCityTeam/3DTiles-Server-docker.git
+      dockerfile: 3dtiles-server-context/Dockerfile
+      args:
+        TILESET_SOURCE: ${TILESET_SOURCE}
+        TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
     ports:
-      - "${STRABON_PORT}:8080"
-
+      - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
+  # postgis:
+  #   image: bde2020/postgis
+  #   hostname: postgis
+  #   environment:
+  #     - POSTGRES_USER=${POSTGRES_USER}
+  #     - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  #     - POSTGRES_DB=${POSTGRES_DB_NAME}
+  #   volumes:
+  #     - ./postgres:/var/lib/postgresql/9.4/main
+  #   ports:
+  #     - "${POSTGRES_PORT}:5432"
+  # strabon:
+  #   build:
+  #     context: ./strabon-context
+  #   hostname: strabon
+  #   environment:
+  #     - STRABON_CONNECTION_hostname=${POSTGRES_ORDBMS}
+  #     - STRABON_CONNECTION_port=${POSTGRES_PORT}
+  #     - STRABON_CREDENTIALS_username=${STRABON_CREDENTIALS_username}
+  #     - STRABON_CREDENTIALS_password=${STRABON_CREDENTIALS_password}
+  #   ports:
+  #     - "${STRABON_PORT}:8080"
   udviz:
     build:
       context: ./ud-viz-context
