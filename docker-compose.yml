@@ -1,14 +1,14 @@
 version: '2'
 services:
-  3dtiles-server:
-    build:
-      context: https://github.com/VCityTeam/3DTiles-Server-docker.git
-      dockerfile: 3dtiles-server-context/Dockerfile
-      args:
-        TILESET_SOURCE: ${TILESET_SOURCE}
-        TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
-    ports:
-      - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
+  # 3dtiles-server:
+  #   build:
+  #     context: https://github.com/VCityTeam/3DTiles-Server-docker.git
+  #     dockerfile: 3dtiles-server-context/Dockerfile
+  #     args:
+  #       TILESET_SOURCE: ${TILESET_SOURCE}
+  #       TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
+  #   ports:
+  #     - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
 
   postgis:
     image: bde2020/postgis

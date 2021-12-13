@@ -8,4 +8,4 @@ TODO.txt
 .vs
 .vscode
 Test/**
-./postgres
+postgres
