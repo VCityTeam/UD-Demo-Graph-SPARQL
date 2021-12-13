@@ -20,8 +20,6 @@ RUN git clone https://github.com/VCityTeam/UD-Viz-Template.git
 WORKDIR UD-Viz-Template
 COPY package.json package.json
 COPY bootstrap.js src/bootstrap.js
-COPY config.json assets/config/config.json
-COPY sparqlModule.svg assets/icons/sparqlModule.svg
 RUN npm install
 RUN npm run build
 
@@ -30,6 +28,10 @@ WORKDIR /
 RUN git clone https://github.com/VCityTeam/UD-SimpleServer
 WORKDIR UD-SimpleServer
 RUN npm install
+
+######### Copy assets
+COPY sparqlModule.svg /UD-Viz-Template/assets/icons/sparqlModule.svg
+COPY config.json /UD-Viz-Template/assets/config/config.json
 
 EXPOSE 80
 CMD [ "node", "./index.js", "/UD-Viz-Template", "80" ]
