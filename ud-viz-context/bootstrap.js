@@ -19,20 +19,6 @@ app.start('../assets/config/config.json').then(() => {
   const about = new udv.Widgets.AboutWindow();
   app.addModuleView('about', about);
 
-  ////// AUTHENTICATION MODULE
-  const authenticationService =
-    new udv.Widgets.Extensions.AuthenticationService(
-      requestService,
-      app.config
-    );
-
-  const authenticationView = new udv.Widgets.Extensions.AuthenticationView(
-    authenticationService
-  );
-  app.addModuleView('authentication', authenticationView, {
-    type: udv.Templates.AllWidget.AUTHENTICATION_MODULE,
-  });
-
   ////// CITY OBJECTS MODULE
   let cityObjectModule = new udv.Widgets.CityObjectModule(
     app.layerManager,
@@ -54,13 +40,6 @@ app.start('../assets/config/config.json').then(() => {
     app.controls
   );
   app.addModuleView('cameraPositioner', cameraPosition);
-
-  // ////// TEMPORAL MODULE
-  // const temporalModule = new udv.Widgets.TemporalModule(
-  //   app.layerManager.tilesManagers[0],
-  //   app.config.temporalModule
-  // );
-  // app.addModuleView("temporal", temporalModule.view);
 
   ////// LAYER CHOICE MODULE
   const layerChoice = new udv.Widgets.LayerChoice(app.layerManager);

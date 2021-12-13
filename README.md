@@ -25,30 +25,18 @@ A demonstration for visualizing RDF semantic graphs alongside 3D City models usi
 
 ### Component Setup
 To configure the demo and the components that support it edit the `.env` file to be launched with docker-compose. By default the following ports are used by the following services:
-- 8995: `3dtiles-server`
 - 8996: `PostGIS`
 - 8997: `Strabon`
 - 8998: `UD-Viz`
 
-If other ports are declared in the `.env` for `3dtiles-server` or `Strabon` make sure to also update them in the `./UD-Viz/config.json` file before building their respective docker images.
+**Note:** If changing ports declared in the `.env` file `Strabon` make sure to also update them in the `./ud-viz-context/config.json` file and rebuild any existing UD-Viz docker images and containers.
 
 The following sections will describe how to configure this file for each component. 
 
-### Build Images
-In order to serve the 3D Tiles dataset to be used in the demo (located [here](./data/)) to UD-Viz, first the files must be loaded into the docker image.
-
-To do this, run the `servelocalfiles.py` script to expose the data files locally on `localhost:8080`:
-```
-python3 servelocalfiles.py
-```
-Next build the 3D Tiles Server, Strabon, and UD-Viz docker images:
+### Build Images and run containers
+First, build the PostGIS, Strabon, and UD-Viz docker images and run their containers:
 ```
 docker-compose build
-```
-When complete, halt the `servelocalfiles.py` script with `Ctrl+c`.
-
-Once the images are built initialize their containers:
-```
 docker-compose up
 ```
 
@@ -66,7 +54,10 @@ For the SPARQL module to function an RDF dataset must be uploaded to Strabon. To
 Now the demo is ready and can be accessed from `localhost:8998`
 
 ## Known Issues
-- The connection between the Strabon and PostGIS is known to break upon restarting their containers. To fix this, with all containers stopped, delete the Strabon container and restart the service with docker-compose:
+- The connection between the Strabon and PostGIS is known to break upon restarting their containers. To fix this, stop all demo containers, delete the Strabon container, and restart the service with docker-compose:
 ```
+docker stop ud-demo-graph-sparql_postgis_1 ud-demo-graph-sparql_strabon_1 ud-demo-graph-sparql_udviz_1
 docker rm ud-demo-graph-sparql_strabon_1
+docker-compose up
 ```
+- The Strabon administrative credentials cannot be changed from the `.env` file. See issue [#1](https://github.com/VCityTeam/UD-Demo-Graph-SPARQL/issues/1).

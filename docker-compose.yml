@@ -9,7 +9,6 @@ services:
   #       TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
   #   ports:
   #     - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
-
   postgis:
     image: bde2020/postgis
     hostname: postgis
@@ -21,10 +20,9 @@ services:
       - ./postgres:/var/lib/postgresql/9.4/main
     ports:
       - "${POSTGRES_PORT}:5432"
-
   strabon:
     build:
-      context: ./Strabon
+      context: ./strabon-context
     hostname: strabon
     environment:
       - STRABON_CONNECTION_hostname=${POSTGRES_ORDBMS}
@@ -33,9 +31,8 @@ services:
       - STRABON_CREDENTIALS_password=${STRABON_CREDENTIALS_password}
     ports:
       - "${STRABON_PORT}:8080"
-
   udviz:
     build:
-      context: ./UD-Viz
+      context: ./ud-viz-context
     ports:
       - ${UD_VIZ_PORT}:80
