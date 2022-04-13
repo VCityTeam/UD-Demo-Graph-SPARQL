@@ -1,4 +1,7 @@
 version: '2.1'
+volumes:
+  postgres_volume:
+    name: ${POSTGRES_VOLUME_NAME}
 services:
   postgis:
     image: bde2020/postgis
@@ -8,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB_NAME}
     volumes:
-      - ./postgres:/var/lib/postgresql/9.4/main
+      - postgres_volume:/var/lib/postgresql/9.4/main:rw
     ports:
       - "${POSTGRES_PORT}:5432"
   strabon:
