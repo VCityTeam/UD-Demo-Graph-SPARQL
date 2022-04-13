@@ -9,4 +9,4 @@ TODO.txt
 .vscode
 Test/**
 .env
-./postgres
+./postgres/**
