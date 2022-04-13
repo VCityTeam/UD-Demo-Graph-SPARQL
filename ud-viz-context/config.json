@@ -4,11 +4,24 @@
     "imageFolder": "../assets/img",
     "logos": ["logo-liris.png", "logo-univ-lyon.png"]
   },
+  "server": {
+    "url": "http://rict.liris.cnrs.fr:1525/",
+    "login": "login",
+    "user": "user",
+    "userMe": "user/me",
+    "document": "document",
+    "documentToValidate": "document/in_validation",
+    "comment": "comment",
+    "validate": "document/validate",
+    "file": "file",
+    "guidedTour": "guidedTour",
+    "link": "link"
+  },
   "extents": {
-    "min_x": "1837860.980127206",
-    "max_x": "1851647",
-    "min_y": "5169347.4265999",
-    "max_y": "5180575"
+    "min_x": "1840627.734055565",
+    "max_x": "1843260.8609677448",
+    "min_y": "5175379.43659876",
+    "max_y": "5176964.357729223"
   },
   "helpWindow": {
     "htmlPaths": [
@@ -71,5 +84,9 @@
         }
       }
     }
+  },
+  "sparqlModule": {
+    "url": "http://localhost:8997/strabon/",
+    "url_parameters": "Query?handle=download&format=SPARQL/JSON&view=HTML&query="
   }
 }

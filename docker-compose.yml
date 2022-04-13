@@ -3,6 +3,15 @@ volumes:
   postgres_volume:
     name: ${POSTGRES_VOLUME_NAME}
 services:
+  # 3dtiles-server:
+  #   build:
+  #     context: https://github.com/VCityTeam/3DTiles-Server-docker.git
+  #     dockerfile: 3dtiles-server-context/Dockerfile
+  #     args:
+  #       TILESET_SOURCE: ${TILESET_SOURCE}
+  #       TILESET_SERVER_PORT: ${TILESET_SERVER_PORT}
+  #   ports:
+  #     - ${TILESET_SERVER_PORT}:${TILESET_SERVER_PORT}
   postgis:
     image: bde2020/postgis
     hostname: postgis
