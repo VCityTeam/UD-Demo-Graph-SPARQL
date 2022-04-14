@@ -47,14 +47,6 @@ All files in the [data folder](./strabon-context/data) are copied into the Strab
 1. Open a web browser and navigate to `localhost:8997/strabon`
 2. From the left menu, click *Explore/Modify operations* then *Store*
 3. Copy and paste the local path of each file in the data folder as `file:///data/[file to upload]` into the *URI Input* field and click *Store from URI*
+   - ⚠️ You may be asked to enter the Strabon administrative credentials here. However, these credentials currently cannot be changed from the `.env` file. See issue [#1](https://github.com/VCityTeam/UD-Demo-Graph-SPARQL/issues/1).
 
 Now the demo is ready and can be accessed from `localhost:8998`
-
-## Known Issues
-- The connection between the Strabon and PostGIS is known to break upon restarting their containers. To fix this, stop all demo containers, delete the Strabon container, and restart the service with docker-compose:
-```
-docker stop ud-demo-graph-sparql_postgis_1 ud-demo-graph-sparql_strabon_1 ud-demo-graph-sparql_udviz_1
-docker rm ud-demo-graph-sparql_strabon_1
-docker-compose up
-```
-- The Strabon administrative credentials cannot be changed from the `.env` file. See issue [#1](https://github.com/VCityTeam/UD-Demo-Graph-SPARQL/issues/1).
