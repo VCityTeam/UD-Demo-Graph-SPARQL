@@ -5,19 +5,19 @@ import * as udv from 'ud-viz'
 
 let app = new udv.Templates.AllWidget();
 
-app.start('../assets/config/config.json').then(() => {
+app.start('../assets/config/config.json')
+   .then((config) => {
   app.addBaseMapLayer();
 
   app.addElevationLayer();
 
-  app.setupAndAdd3DTilesLayers();
-
-  ////// REQUEST SERVICE
-  const requestService = new udv.Components.RequestService();
-
   ////// ABOUT MODULE
   const about = new udv.Widgets.AboutWindow();
   app.addModuleView('about', about);
+
+  ////// HELP MODULE
+  const help = new udv.Widgets.Extensions.HelpWindow(config.helpWindow);
+  app.addModuleView('help', help);
 
   ////// CITY OBJECTS MODULE
   let cityObjectModule = new udv.Widgets.CityObjectModule(
@@ -40,14 +40,12 @@ app.start('../assets/config/config.json').then(() => {
     app.controls
   );
   app.addModuleView('cameraPositioner', cameraPosition);
+  app.setupAndAdd3DTilesLayers();
 
-  ////// LAYER CHOICE MODULE
-  const layerChoice = new udv.Widgets.LayerChoice(app.layerManager);
-  app.addModuleView('layerChoice', layerChoice);
-
-  ////// SPARQL MODULE
-  const sparqlModule = new udv.Widgets.Extensions.SparqlModule(app.config, app.layerManager);
-  app.addModuleView('sparqlModule', sparqlModule.view, {
-    name: 'SPARQL Query'
-  });
+  ////// TEMPORAL MODULE
+  const temporalModule = new udv.Widgets.TemporalModule(
+    app.layerManager.tilesManagers[0],
+    app.config.temporalModule
+  );
+  app.addModuleView('temporal', temporalModule.view);
 });

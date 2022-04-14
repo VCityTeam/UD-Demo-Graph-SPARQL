@@ -29,9 +29,9 @@ RUN git clone https://github.com/VCityTeam/UD-SimpleServer
 WORKDIR UD-SimpleServer
 RUN npm install
 
-######### Copy assets
-COPY sparqlModule.svg /UD-Viz-Template/assets/icons/sparqlModule.svg
+# Add/overwrite default assets
 COPY config.json /UD-Viz-Template/assets/config/config.json
+COPY sparqlModule.svg /UD-Viz-Template/assets/icons/sparqlModule.svg
 
 EXPOSE 80
 CMD [ "node", "./index.js", "/UD-Viz-Template", "80" ]
