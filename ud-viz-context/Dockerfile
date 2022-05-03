@@ -17,7 +17,7 @@ RUN git --version
 
 ######### Install UD-Viz-Template, a basic web application for UD-Viz projects
 RUN git clone https://github.com/VCityTeam/UD-Viz-Template.git
-WORKDIR UD-Viz-Template
+WORKDIR /UD-Viz-Template
 COPY package.json package.json
 COPY bootstrap.js src/bootstrap.js
 RUN npm install
@@ -26,7 +26,7 @@ RUN npm run build
 ######### Install SimpleServer (an ExpressJS based...simple server)
 WORKDIR /
 RUN git clone https://github.com/VCityTeam/UD-SimpleServer
-WORKDIR UD-SimpleServer
+WORKDIR /UD-SimpleServer
 RUN npm install
 
 # Add/overwrite default assets
