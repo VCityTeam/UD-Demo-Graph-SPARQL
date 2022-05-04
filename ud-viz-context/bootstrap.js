@@ -18,6 +18,18 @@ app.start('../assets/config/config.json')
   ////// HELP MODULE
   const help = new udv.Widgets.Extensions.HelpWindow(config.helpWindow);
   app.addModuleView('help', help);
+  
+  ////// CAMERA POSITIONER
+  const cameraPosition = new udv.Widgets.CameraPositionerView(
+    app.view,
+    app.controls
+  );
+  app.addModuleView('cameraPositioner', cameraPosition);
+  app.setupAndAdd3DTilesLayers();
+  
+  ////// LAYER CHOICE MODULE
+  const layerChoice = new udv.Widgets.LayerChoice(app.layerManager);
+  app.addModuleView('layerChoice', layerChoice);
 
   ////// CITY OBJECTS MODULE
   let cityObjectModule = new udv.Widgets.CityObjectModule(
@@ -26,21 +38,11 @@ app.start('../assets/config/config.json')
   );
   app.addModuleView('cityObjects', cityObjectModule.view);
 
-  ////// 3DTILES DEBUG
-  const debug3dTilesWindow = new udv.Widgets.Extensions.Debug3DTilesWindow(
-    app.layerManager
-  );
-  app.addModuleView('3dtilesDebug', debug3dTilesWindow, {
-    name: '3DTiles Debug',
+  ////// SPARQL MODULE
+  const sparqlModule = new udv.Widgets.Extensions.SparqlModule(app.config, app.layerManager);
+  app.addModuleView('sparqlModule', sparqlModule.view, {
+    name: 'SPARQL Query'
   });
-
-  ////// CAMERA POSITIONER
-  const cameraPosition = new udv.Widgets.CameraPositionerView(
-    app.view,
-    app.controls
-  );
-  app.addModuleView('cameraPositioner', cameraPosition);
-  app.setupAndAdd3DTilesLayers();
 
   ////// TEMPORAL MODULE
   const temporalModule = new udv.Widgets.TemporalModule(
@@ -48,4 +50,12 @@ app.start('../assets/config/config.json')
     app.config.temporalModule
   );
   app.addModuleView('temporal', temporalModule.view);
+  
+  ////// 3DTILES DEBUG
+  const debug3dTilesWindow = new udv.Widgets.Extensions.Debug3DTilesWindow(
+    app.layerManager
+  );
+  app.addModuleView('3dtilesDebug', debug3dTilesWindow, {
+    name: '3DTiles Debug',
+  });
 });

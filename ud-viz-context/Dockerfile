@@ -15,7 +15,13 @@ RUN npm --version
 RUN apt-get install -y git
 RUN git --version
 
+######### Install SimpleServer (an ExpressJS based...simple server)
+RUN git clone https://github.com/VCityTeam/UD-SimpleServer
+WORKDIR /UD-SimpleServer
+RUN npm install
+
 ######### Install UD-Viz-Template, a basic web application for UD-Viz projects
+WORKDIR /
 RUN git clone https://github.com/VCityTeam/UD-Viz-Template.git
 WORKDIR /UD-Viz-Template
 COPY package.json package.json
@@ -23,15 +29,10 @@ COPY bootstrap.js src/bootstrap.js
 RUN npm install
 RUN npm run build
 
-######### Install SimpleServer (an ExpressJS based...simple server)
-WORKDIR /
-RUN git clone https://github.com/VCityTeam/UD-SimpleServer
-WORKDIR /UD-SimpleServer
-RUN npm install
-
 # Add/overwrite default assets
 COPY config.json /UD-Viz-Template/assets/config/config.json
 COPY sparqlModule.svg /UD-Viz-Template/assets/icons/sparqlModule.svg
 
+WORKDIR /UD-SimpleServer
 EXPOSE 80
 CMD [ "node", "./index.js", "/UD-Viz-Template", "80" ]

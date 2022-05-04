@@ -18,10 +18,10 @@
     "link": "link"
   },
   "extents": {
-    "min_x": "1840627.734055565",
-    "max_x": "1843260.8609677448",
-    "min_y": "5175379.43659876",
-    "max_y": "5176964.357729223"
+    "min_x": "1840158",
+    "max_x": "1851647",
+    "min_y": "5171502",
+    "max_y": "5180575"
   },
   "helpWindow": {
     "htmlPaths": [
@@ -46,9 +46,9 @@
   },
   "camera": {
     "position": {
-      "range": "3000",
+      "range": "2500",
       "heading": "-49.6",
-      "tilt": "17"
+      "tilt": "30"
     }
   },
   "3DTilesLayers": [
@@ -63,7 +63,7 @@
     "view": "SLIDERWINDOW",
     "minTime": 2009,
     "maxTime": 2018,
-    "currentTime": 2009,
+    "currentTime": 2018,
     "timeStep": 1
   },
   "cityObjects": {
