@@ -1,6 +1,6 @@
 # UD-Demo-Graph-SPARQL
 
-A demonstration for visualizing RDF semantic graphs alongside 3D City models using:
+A template repository for creating demos for visualizing RDF semantic graphs alongside 3D City models using:
 * [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
   * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
 * [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
