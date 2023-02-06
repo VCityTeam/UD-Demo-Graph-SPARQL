@@ -10,6 +10,7 @@ A template repository for creating demos for visualizing RDF semantic graphs alo
 ![SPARQL POC Component Diagram](./UD-Demo_SPARQL_POC_Component_Diagram.svg)
 
 ## Installation
+
 ### Pre-requisites 
 
 * [Install Docker](https://docs.docker.com/engine/install/)
@@ -21,6 +22,16 @@ A template repository for creating demos for visualizing RDF semantic graphs alo
     sudo apt update
     sudo apt install python3
     ```
+
+### Repository setup
+To begin create a new Github repository using this template:
+
+![image](https://user-images.githubusercontent.com/23373264/217045942-5f994e2d-431e-4620-bf76-f1cc1f1d7673.png)
+
+Once generated, use the new repository can be cloned:
+```
+git clone [your new repository URL]
+```
 
 ### Component Setup
 To configure the demo and the components that support it edit the `.env` file to be launched with docker-compose. By default the following ports are used by the following services:
