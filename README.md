@@ -15,13 +15,6 @@ A template repository for creating demos for visualizing RDF semantic graphs alo
 
 * [Install Docker](https://docs.docker.com/engine/install/)
 * [Install Docker Compose](https://docs.docker.com/compose/install/)
-* Install Python 3
-  * [Windows](https://www.python.org/downloads/)
-  * Ubuntu:
-    ```
-    sudo apt update
-    sudo apt install python3
-    ```
 
 ### Repository setup
 To begin create a new Github repository using this template:
