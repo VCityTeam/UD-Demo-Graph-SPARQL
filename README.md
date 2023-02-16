@@ -1,5 +1,7 @@
 # UD-Demo-Graph-SPARQL
 
+[![Build Status](https://app.travis-ci.com/VCityTeam/UD-Demo-Graph-SPARQL.svg?branch=master)](https://app.travis-ci.com/github/VCityTeam/UD-Demo-Graph-SPARQL)
+
 A template repository for creating demos for visualizing RDF semantic graphs alongside 3D City models using:
 * [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
   * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
