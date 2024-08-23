@@ -46,11 +46,11 @@ docker compose up
 > [!NOTE]
 > Make sure to set the `sparqlModule/url` port in the `./ud-viz-context/config.json` file to the same port for the triple store container declared in the `.env` file.
 > If these ports are ever changed after building the images, the _UD-Viz_ image must be rebuilt:
-```bash
-docker compose stop udviz
-docker compose build udviz
-docker compose up udviz
-```
+> ```bash
+> docker compose stop udviz
+> docker compose build udviz
+> docker compose up udviz
+> ```
 
 ### Upload RDF-Store Dataset
 It is recommended to upload files automatically using the [Blazegraph REST API](https://github.com/blazegraph/database/wiki/REST_API)
