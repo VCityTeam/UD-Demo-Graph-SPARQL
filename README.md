@@ -23,8 +23,14 @@ To begin create a new Github repository using this template:
 
 ![image](https://user-images.githubusercontent.com/23373264/217045942-5f994e2d-431e-4620-bf76-f1cc1f1d7673.png)
 
-Once generated, use the new repository can be cloned:
+In the new repository update this readme with the appropriate instructions and information for your demo application.
+Note that the link to the CI Build status icon should be updated (or removed if not necessary).
+```bash
+[![Build Status](https://app.travis-ci.com/VCityTeam/your_repository_here)](https://app.travis-ci.com/github/VCityTeam/your_repository_here)
 ```
+
+Once updated, use the new repository can be cloned:
+```bash
 git clone [your new repository URL]
 ```
 
