@@ -29,7 +29,7 @@ Note that the link to the CI Build status icon should be updated (or removed if 
 [![Build Status](https://app.travis-ci.com/VCityTeam/your_repository_here)](https://app.travis-ci.com/github/VCityTeam/your_repository_here)
 ```
 
-Once updated, use the new repository can be cloned:
+Once updated, the new repository can be cloned:
 ```bash
 git clone [your new repository URL]
 ```
