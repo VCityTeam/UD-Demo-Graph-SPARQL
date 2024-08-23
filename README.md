@@ -6,8 +6,6 @@ A template repository for creating demos for visualizing RDF semantic graphs alo
 * [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
   * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
 * And some RDF store as a backend. Currently two options are supported:
-  * [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
-    * Also requires [PostGIS](https://postgis.net/) a geospatial database extension of [PostgreSQL](https://www.postgresql.org/) used here as a backend database for Strabon
   * [Blazegraph](https://blazegraph.com/), a ultra-high-performance graph database supporting Blueprints and RDF/SPARQL APIs
 
 ### Component Diagram
@@ -49,13 +47,17 @@ docker compose up
 > Make sure to set the `sparqlModule/url` port in the `./ud-viz-context/config.json` file to the same port for the triple store container declared in the `.env` file.
 > If these ports are ever changed after building the images, the _UD-Viz_ image must be rebuilt:
 ```bash
+docker compose stop udviz
 docker compose build udviz
+docker compose up udviz
 ```
 
 ### Upload RDF-Store Dataset
-To upload files into Blazegraph to be used by the sparqlModule run the [./loadData.sh](./loadData.sh) script with the blazegraph SPARQL query endpoint as a parameter: 
+It is recommended to upload files automatically using the [Blazegraph REST API](https://github.com/blazegraph/database/wiki/REST_API)
+
+For example, to upload an online RDF file into Blazegraph use the following command:
 ```bash
-./loadData.sh http://127.0.0.1:8001/blazegraph/sparql > log.html
+curl -X POST --data-binary 'uri=https://dataset-dl.liris.cnrs.fr/rdf-owl-urban-data-ontologies/Datasets/GratteCiel_Workspace_2009_2018/3.0/GratteCiel_2009_2018_Workspace.rdf' 'http://127.0.0.1:9011/blazegraph/sparql'
 ```
 
 Now the UD-Viz demo is ready and can be accessed from [localhost:8000](http://localhost:8000)
