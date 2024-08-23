@@ -5,11 +5,13 @@
 A template repository for creating demos for visualizing RDF semantic graphs alongside 3D City models using:
 * [UD-Viz](https://github.com/VCityTeam/UD-Viz) as a frontend web application for urban data visualization
   * In particular the [SPARQL module](https://github.com/VCityTeam/UD-Viz/tree/master/src/Widgets/Extensions/SPARQL) is used to visualize semantic urban data in the form of RDF
-* [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
-* [PostGIS](https://postgis.net/) a geospatial database extension of [PostgreSQL](https://www.postgresql.org/) used here as a backend database for Strabon
+* And some RDF store as a backend. Currently two options are supported:
+  * [Strabon RDF Store](http://www.strabon.di.uoa.gr/) an RDF-Store for storing and serving geospatial semantic graph data in the form of RDF
+    * Also requires [PostGIS](https://postgis.net/) a geospatial database extension of [PostgreSQL](https://www.postgresql.org/) used here as a backend database for Strabon
+  * [Blazegraph](https://blazegraph.com/), a ultra-high-performance graph database supporting Blueprints and RDF/SPARQL APIs
 
 ### Component Diagram
-![SPARQL POC Component Diagram](./UD-Demo_SPARQL_POC_Component_Diagram.svg)
+<img src="./UD-Demo_SPARQL_POC_Component_Diagram.svg" width="800px" />
 
 ## Installation
 
@@ -29,30 +31,32 @@ git clone [your new repository URL]
 ```
 
 ### Component Setup
-To configure the demo and the components that support it edit the `.env` file to be launched with docker-compose. By default the following ports are used by the following services:
-- 8996: `PostGIS`
-- 8997: `Strabon`
-- 8998: `UD-Viz`
-
+To configure the demo and the components that support it edit the `.env` file to be launched with docker-compose. By default, the following ports are used by the following services:
+```bash
+#### UD-Viz
+UD_VIZ_PORT=8000
+#### BlazeGraph
+BLAZEGRAPH_PORT=8001
+```
 The following sections will describe how to configure this file for each component. 
 
 ### Build Images and run containers
-First, build the PostGIS, Strabon, and UD-Viz docker images and run their containers:
+First, build the docker images and run their containers:
+```bash
+docker compose up
 ```
-docker-compose up
-```
-
-**Note:** Make sure to set the `sparqlModule/url` port in the `./ud-viz-context/config.json` file to the same port for the _Strabon_ container declared in the `.env` file. If these ports are ever changed after building the images, the _UD-Viz_ image must be rebuilt:
-```
-docker-compose rm udviz
-docker-compose build udviz
+> [!NOTE]
+> Make sure to set the `sparqlModule/url` port in the `./ud-viz-context/config.json` file to the same port for the triple store container declared in the `.env` file.
+> If these ports are ever changed after building the images, the _UD-Viz_ image must be rebuilt:
+```bash
+docker compose build udviz
 ```
 
 ### Upload RDF-Store Dataset
-All files in the [data folder](./strabon-context/data) are copied into the Strabon container at `/data`. To upload these files into Strabon to be used by the sparqlModule:
-1. Open a web browser and navigate to `localhost:8997/strabon`
-2. From the left menu, click *Explore/Modify operations* then *Store*
-3. Copy and paste the local path of each file in the data folder as `file:///data/[file to upload]` into the *URI Input* field and click *Store from URI*
-   - ⚠️ You may be asked to enter the Strabon administrative credentials here. However, these credentials currently cannot be changed from the `.env` file. See issue [#1](https://github.com/VCityTeam/UD-Demo-Graph-SPARQL/issues/1).
+To upload files into Blazegraph to be used by the sparqlModule run the [./loadData.sh](./loadData.sh) script with the blazegraph SPARQL query endpoint as a parameter: 
+```bash
+./loadData.sh http://127.0.0.1:8001/blazegraph/sparql > log.html
+```
 
-Now the demo is ready and can be accessed from `localhost:8998`
+Now the UD-Viz demo is ready and can be accessed from [localhost:8000](http://localhost:8000)
+The Blazegraph interface can also be accessed from [localhost:8001](http://localhost:8001)
